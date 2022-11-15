@@ -1,0 +1,30 @@
+--
+
+- hosts: web
+  gather_facts: true
+  become: true
+
+
+
+  tasks:
+  - name: Install nodejs
+    apt: pkg=nodejs state=present
+
+  - name: Install NPM
+    apt: pkg=npm state=present
+
+  - name: Copy web app into web virtual machine
+
+    synchronize:
+      src: /home/vagrant/app
+      dest: /home/vagrant
+
+  - name: run app
+    shell: |
+      cd app/
+      npm install
+      npm start
+
+
+
+

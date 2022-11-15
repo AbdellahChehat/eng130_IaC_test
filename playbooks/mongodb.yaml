@@ -1,0 +1,25 @@
+
+---
+
+#- hosts: db
+
+#  gather_facts: yes
+
+#  become: true
+
+#  tasks:
+#   - name:install mongodb
+#     apt: pkg=mongodb state=present
+
+# who is the host - means name of the server 
+- hosts: db
+# gather data 
+  gather_facts: yes
+# we need admin access 
+  become: true
+# add the actual instructions 
+  tasks:
+   - name: Install/configure monogo
+     apt: pkg=mongodb state=present
+
+# ensure ar=t the end of this script the status of nginx is running 
